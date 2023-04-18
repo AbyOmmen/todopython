@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+
+                <div class="banner-text">
+                    <h2><i>....The To-Do List....</i></h2>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+     <div class="row">
+         <div class="col-md-6" style="width: 37%">
+             <form method="POST" class="p-3 shadow">
+                 <div class="form-group">
+                     <input class="form-control" type="text" name="task" placeholder="Task name">
+                 </div>
+                 <br>
+                 <div class="form-group">
+                     <input class="form-control" type="text" name="priority" placeholder="Choose your priority">
+                 </div>
+                 <br>
+                 <div class="form-group">
+                     <input class="form-control" type="date" name="date" placeholder="Enter the date">
+                 </div>
+                 <br>
+                 <input type="submit" class="btn btn-success">
+             {% csrf_token %}
+             </form>
+         </div>
+
+     </div>
+    <br>
+<h4 class="base">Manage your team and Everything with ToDo...........</h4>
+     <div class="col-md-4">
+        <h4 class="base">Here is your Tasks...</h4>
+        {% for i in task1 %}
+        <div class="shadow card" style="background: floralwhite">
+            <div class="card-body">
+                <h5 class="card-title" style="font-family: cursive">Task : {{i.name}}</h5>
+                <p class="card-title" style="font-family: cursive"><b>priority : {{i.priority}}</b></p>
+                <p class="card-title" style="font-family: cursive"><b>Date : {{i.date}}</b></p>
+                <a class="btn btn-warning"href="{% url 'delete' i.id %}">Done</a>
+                <a class="btn btn-info"href="{% url 'update' i.id %}">Update</a>
+            </div>
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+</div>
+
+ <div class="footer">
+
+            <p class="base1">English (US) Malayalam (KL) Hindi (IND) Tamil (CHN) Telugu FUYT  FGHJKL;NT)</p>
+            <hr>
+            <p class="base2">Designed by Aby Ommen Panicker</p>
+        </div>
+{% endblock %}
+
+
+
+
